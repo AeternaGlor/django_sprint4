@@ -83,6 +83,9 @@ class Post(AbstractModel):
         related_name="posts",
         null=True,
     )
+    image = models.ImageField('Фото', upload_to='post_images', blank=True)
+    comment_count = models.IntegerField("Количество комментариев", default=0)
+
 
     class Meta:
         verbose_name = "публикация"
@@ -91,3 +94,24 @@ class Post(AbstractModel):
 
     def __str__(self):
         return self.title
+
+
+class Comment(AbstractModel):
+    text = models.TextField(verbose_name='Текст')
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name='Автор комментария',
+        related_name='comments'
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        verbose_name='Пост',
+        related_name='comments'
+    )
+
+    class Meta:
+        ordering = ('created_at',)
+        verbose_name = 'комментарий'
+        verbose_name_plural = 'Комментарии'

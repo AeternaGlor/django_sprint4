@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-blimhxqdcegx&$7v50owz+a)tl4krgij5b$tosm$i2=233b^@$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG=False
+# DEBUG = True
+DEBUG=False
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -138,14 +138,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_FAILURE_VIEW = 'pages.views.csrf_failure'
-
-# Подключаем бэкенд filebased.EmailBackend:
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-# Указываем директорию, в которую будут сохраняться файлы писем:
-EMAIL_FILE_PATH = BASE_DIR / 'sent_emails'
-
-LOGIN_REDIRECT_URL = 'blog:index'
-LOGIN_URL = 'login'
-
-MEDIA_ROOT = BASE_DIR / 'media'
+CSRF_FAILURE_VIEW = 'core.views.csrf_failure' 
