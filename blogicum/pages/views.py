@@ -20,4 +20,3 @@ def page_not_found(request, exception):
 
 def custom_500(request):
     return render(request, 'pages/500.html', status=500)
-

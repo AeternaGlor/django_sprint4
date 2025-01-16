@@ -25,32 +25,31 @@ urlpatterns = [
     ),
     path(
         'posts/<int:pk>/comment/',
-         views.add_comment,
-         name='add_comment'
+        views.add_comment,
+        name='add_comment'
     ),
     path(
         'posts/<int:post_id>/edit_comment/<int:pk>/',
-         views.CommentUpdateView.as_view(),
-         name='edit_comment'
+        views.CommentUpdateView.as_view(),
+        name='edit_comment'
     ),
     path(
         'posts/<int:post_id>/delete_comment/<int:pk>/',
-         views.CommentDeleteView.as_view(),
-         name='delete_comment'
+        views.CommentDeleteView.as_view(),
+        name='delete_comment'
     ),
 
     path('category/<slug:category_slug>/',
          views.category_posts,
          name='category_posts'),
     path(
-         'profile/<slug:username>/',
-         views.profile,
-         name='profile'
+        'profile/<slug:username>/',
+        views.profile,
+        name='profile'
     ),
     path(
         'profile/<slug:username>/edit/',
         views.UpdateUser.as_view(),
         name='edit_profile'
     ),
-    
 ]

@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404, render, redirect
 from .models import Post, Category, Comment
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.core.paginator import Paginator
 from . import forms
 from django.contrib.auth.decorators import login_required
@@ -227,7 +227,7 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
 
     slug_field = 'username'
     slug_url_kwarg = 'username'
-    
+
     def get_success_url(self):
         return reverse(
             'blog:profile',
